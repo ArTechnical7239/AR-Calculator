@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="171352_calculator_icon.png">
+</head>
+<body>
+    <div class="main">
+        <h1>Calculator</h1>        
+        <div class="card">
+            <div class="tools">
+              <div class="circle">
+                <span class="red box"></span>
+              </div>
+              <div class="circle">
+                <span class="yellow box"></span>
+              </div>
+              <div class="circle">
+                <span class="green box"></span>
+              </div>
+            </div>
+            <div class="card__content">
+                <div class="cal-screen">0</div>
+                <div class="cal-btns">
+            <button class="btn reset red">AC</button>
+            <button class="btn">√x</button>
+            <button class="btn">%</button>
+            <button class="btn div org">÷</button>
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">9</button>
+            <button class="btn mul org">x</button>
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn min org">-</button>
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn plus org">+</button>
+            <button class="btn">0</button>
+            <button class="btn">.</button>
+            <button class="btn">+/-</button>
+            <button class="btn equal org">=</button>
+                </div>
+          </div>
+        </div>
+    </div>
+    <div class="footer">
+      Designed by <a href="mailto:syedabdulrafeyali2005@gmail.com">Syed Abdul Rafey</a>
+    </div>
+    <script>// Select elements
+      const screen = document.querySelector('.cal-screen');
+      const buttons = document.querySelectorAll('.btn');
+      
+      // Initialize variables
+      let currentInput = '0';
+      let previousInput = '';
+      let operator = null;
+      let result = null;
+      
+      function updateScreen(value) {
+          screen.textContent = value;
+      }
+      
+      function handleNumber(num) {
+          if (currentInput === '0') {
+              currentInput = num;
+          } else {
+              currentInput += num;
+          }
+      }
+      
+      function handleOperator(op) {
+          if (operator !== null) {
+              handleEquals();
+          }
+          previousInput = currentInput;
+          operator = op;
+          currentInput = '0';
+      }
+      
+      function handleEquals() {
+          if (operator === null) return;
+          let prev = parseFloat(previousInput);
+          let curr = parseFloat(currentInput);
+      
+          switch (operator) {
+              case '+':
+                  result = prev + curr;
+                  break;
+              case '-':
+                  result = prev - curr;
+                  break;
+              case 'x':
+                  result = prev * curr;
+                  break;
+              case '÷':
+                  result = prev / curr;
+                  break;
+              case '%':
+                  result = prev % curr;
+                  break;
+              case '√x':
+                  result = Math.sqrt(curr);
+                  break;
+          }
+      
+          currentInput = result.toString();
+          operator = null;
+          previousInput = '';
+          updateScreen(currentInput);
+      }
+      
+      function handleClear() {
+          currentInput = '0';
+          previousInput = '';
+          operator = null;
+          updateScreen(currentInput);
+      }
+      
+      function handleDecimal() {
+          if (!currentInput.includes('.')) {
+              currentInput += '.';
+          }
+      }
+      
+      function handlePlusMinus() {
+          currentInput = (parseFloat(currentInput) * -1).toString();
+      }
+      
+      buttons.forEach(button => {
+          button.addEventListener('click', () => {
+              const value = button.textContent;
+      
+              if (!isNaN(value)) {
+                  handleNumber(value);
+              } else if (value === 'AC') {
+                  handleClear();
+              } else if (value === '.') {
+                  handleDecimal();
+              } else if (value === '+/-') {
+                  handlePlusMinus();
+              } else if (value === '=') {
+                  handleEquals();
+              } else {
+                  handleOperator(value);
+              }
+      
+              updateScreen(currentInput);
+          });
+      });
+      </script>
+</body>
+</html>

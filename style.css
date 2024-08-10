@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #212121;
+    color: #ffffff;
+}
+* {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+.card {
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 15px;
+    background-color: #011522;
+    border-radius: 8px;
+    z-index: 1;
+}
+h1 {
+    text-align: center;
+    margin-top: -50px;
+    font-size: 60px;
+    margin-bottom: 0px;
+}
+.tools {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+}
+
+.circle {
+    padding: 0 4px;
+}
+
+.box {
+    display: inline-block;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: #ff605c;
+}
+
+.yellow {
+    background-color: #ffbd44;
+}
+
+.green {
+    background-color: #00ca4e;
+} 
+.cal-screen {
+    background-color: none;
+    width: 365px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: right;
+    display: flex;
+    justify-content:end;
+    align-items: end;
+    font-size: 58px;
+}
+.cal-btns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 5px;
+    width: 365px;
+    height: 345px;
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+.btn {
+    background-color: #00ca4daf;
+    color: #f1f1e6;
+    border-radius: 15px;
+    border: 1px solid none; 
+    width: 100%;
+    height: 100%; 
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+
+}
+
+.org {
+    background-color: #ffb741;
+}
+.reset {
+    background-color: #ff605c;
+}
+.equal {
+    background-color: #009cf8;
+}
+.footer {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 15px;
+    text-align: right;
+    font-size: 13px;
+    color: #00ca4e;
+    z-index: 999999;
+  }
+  .footer a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  @media (max-width: 992px) {
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+
